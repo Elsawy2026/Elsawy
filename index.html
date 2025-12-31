@@ -11,11 +11,14 @@
     <header class="header">
         <nav class="nav">
             <div class="container">
-                <div class="nav-brand">
+                <a href="#home" class="nav-brand">
                     <img src="logo.png" alt="اللحيدان لتوريد المياه" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div class="logo" style="display:none;">💧</div>
-                    <h2>اللحيدان لتوريد المياه</h2>
-                </div>
+                    <div class="brand-text">
+                        <h2>اللحيدان لتوريد المياه</h2>
+                        <p class="brand-subtitle">ALLHIDAN FOR WATER SUPPLY</p>
+                    </div>
+                </a>
                 <button class="menu-toggle" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
@@ -48,6 +51,9 @@
                         <a href="#services" class="btn btn-secondary">اكتشف خدماتنا</a>
                     </div>
                 </div>
+                <div class="hero-background-image">
+                    <img src="trucks-depot.jpg" alt="محطة الشاحنات" class="hero-bg-img" onerror="this.style.display='none';">
+                </div>
             </div>
         </section>
 
@@ -63,17 +69,24 @@
                     </div>
                     <div class="about-images">
                         <div class="about-image-card">
-                            <img src="water-treatment-facility.jpg" alt="محطة معالجة المياه" class="about-img" onerror="this.style.display='none';">
+                            <img src="water-treatment-plant.jpg" alt="محطة معالجة المياه الخارجية" class="about-img" onerror="this.src='water-treatment-facility.jpg'; this.onerror=null;">
                             <div class="image-overlay">
                                 <h3>محطة معالجة المياه المتقدمة</h3>
                                 <p>تقنية التناضح العكسي (RO)</p>
                             </div>
                         </div>
                         <div class="about-image-card">
-                            <img src="water-splash.jpg" alt="جودة المياه" class="about-img" onerror="this.style.display='none';">
+                            <img src="treatment-interior.jpg" alt="داخل محطة المعالجة" class="about-img" onerror="this.src='water-treatment-facility.jpg'; this.onerror=null;">
                             <div class="image-overlay">
-                                <h3>مياه نقية وعذبة</h3>
-                                <p>أعلى معايير الجودة</p>
+                                <h3>معدات حديثة ومتطورة</h3>
+                                <p>أنظمة معالجة متقدمة</p>
+                            </div>
+                        </div>
+                        <div class="about-image-card">
+                            <img src="treatment-equipment.jpg" alt="معدات المعالجة" class="about-img" onerror="this.src='water-treatment-equipment.jpg'; this.onerror=null;">
+                            <div class="image-overlay">
+                                <h3>خزانات وأنظمة متطورة</h3>
+                                <p>أحدث التقنيات في المعالجة</p>
                             </div>
                         </div>
                     </div>
@@ -132,22 +145,28 @@
                 <h2 class="section-title">خدماتنا</h2>
                 <div class="services-grid">
                     <div class="service-card">
-                        <img src="water-extraction.jpg" alt="استخراج المياه" class="service-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="water-extraction-well.jpg" alt="استخراج المياه" class="service-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="service-icon" style="display:none;">🚰</div>
-                        <h3>استخراج المياه</h3>
-                        <p>استخراج المياه من المصادر الطبيعية بكفاءة عالية</p>
+                        <div class="service-card-content">
+                            <h3>استخراج المياه</h3>
+                            <p>استخراج المياه من المصادر الطبيعية بكفاءة عالية</p>
+                        </div>
                     </div>
                     <div class="service-card">
-                        <img src="water-treatment-equipment.jpg" alt="معالجة المياه" class="service-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="treatment-interior.jpg" alt="معالجة المياه" class="service-image" onerror="this.src='water-treatment-plant.jpg'; this.onerror=null;">
                         <div class="service-icon" style="display:none;">🔬</div>
-                        <h3>معالجة المياه</h3>
-                        <p>معالجة المياه باستخدام تقنية التناضح العكسي (RO) بأحدث التقنيات</p>
+                        <div class="service-card-content">
+                            <h3>معالجة المياه</h3>
+                            <p>معالجة المياه باستخدام تقنية التناضح العكسي (RO) بأحدث التقنيات</p>
+                        </div>
                     </div>
                     <div class="service-card">
-                        <img src="water-trucks.jpg" alt="نقل وتوزيع المياه" class="service-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="trucks-yard.jpg" alt="نقل وتوزيع المياه" class="service-image" onerror="this.src='trucks-depot.jpg'; this.onerror=null;">
                         <div class="service-icon" style="display:none;">🚚</div>
-                        <h3>نقل وتوزيع المياه</h3>
-                        <p>نقل وتوزيع وتوريد المياه بأسطولنا الحديث المتنوع</p>
+                        <div class="service-card-content">
+                            <h3>نقل وتوزيع المياه</h3>
+                            <p>نقل وتوزيع وتوريد المياه بأسطولنا الحديث المتنوع</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -166,7 +185,7 @@
                     <div class="team-content">
                         <h3 class="team-title">فريق العمل</h3>
                         <p class="team-description">فريق عمل قام على إنجاز المهام في أسرع وقت وبأعلى جودة</p>
-                        <img src="water-trucks.jpg" alt="فريق العمل والعمليات" class="team-image" onerror="this.style.display='none';">
+                        <img src="trucks-yard.jpg" alt="فريق العمل والعمليات" class="team-image" onerror="this.src='trucks-depot.jpg'; this.onerror=null;">
                     </div>
                 </div>
             </div>
@@ -211,7 +230,7 @@
                 <div class="work-steps">
                     <div class="work-step">
                         <div class="step-number">1</div>
-                        <img src="truck-filling.jpg" alt="تعبئة الشاحنة" class="step-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="trucks-depot.jpg" alt="تعبئة الشاحنة" class="step-image" onerror="this.src='trucks-yard.jpg'; this.onerror=null;">
                         <div class="step-icon" style="display:none;">🚚</div>
                         <h3>تعبئة الشاحنة</h3>
                         <p>تعبئة الشاحنات من محطاتنا المعتمدة بجودة عالية</p>
@@ -225,7 +244,7 @@
                     </div>
                     <div class="work-step">
                         <div class="step-number">3</div>
-                        <img src="water-treatment-process.jpg" alt="معالجة المياه" class="step-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="treatment-interior.jpg" alt="معالجة المياه" class="step-image" onerror="this.src='water-treatment-plant.jpg'; this.onerror=null;">
                         <div class="step-icon" style="display:none;">⚙️</div>
                         <h3>معالجة المياه</h3>
                         <p>معالجة شاملة للمياه باستخدام أحدث التقنيات في محطاتنا المتقدمة</p>
