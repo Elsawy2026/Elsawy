@@ -93,7 +93,7 @@ const observer = new IntersectionObserver(function(entries) {
 }, observerOptions);
 
 // Observe all animated elements
-const animatedElements = document.querySelectorAll('.service-card, .work-step, .vision-card, .objectives-card, .truck-card, .contact-item, .testimonial-card');
+const animatedElements = document.querySelectorAll('.service-card, .work-step, .vision-card, .objectives-card, .truck-card, .contact-item, .client-card');
 animatedElements.forEach((el, index) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(40px)';
