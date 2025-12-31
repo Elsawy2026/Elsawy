@@ -540,21 +540,22 @@ section {
 }
 
 .stat-card {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    padding: 3rem 2rem;
-    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    padding: 3.5rem 2.5rem;
+    border-radius: 30px;
     text-align: center;
-    transition: all 0.4s ease;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), inset 0 0 30px rgba(255, 255, 255, 0.1);
 }
 
 .stat-card:hover {
-    transform: translateY(-15px) scale(1.05);
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-20px) scale(1.06);
+    background: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), inset 0 0 40px rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .stat-icon {
@@ -595,13 +596,13 @@ section {
 
 .testimonial-card {
     background: var(--white);
-    padding: 3rem 2.5rem;
-    border-radius: 25px;
+    padding: 3.5rem 3rem;
+    border-radius: 30px;
     box-shadow: var(--shadow-lg);
-    transition: all 0.4s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    border: 2px solid transparent;
+    border: 1px solid rgba(14, 165, 233, 0.1);
 }
 
 .testimonial-card::before {
@@ -616,9 +617,9 @@ section {
 }
 
 .testimonial-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
-    border-color: rgba(14, 165, 233, 0.3);
+    transform: translateY(-15px);
+    box-shadow: var(--shadow-xl), var(--shadow-blue);
+    border-color: rgba(14, 165, 233, 0.4);
 }
 
 .testimonial-rating {
@@ -764,11 +765,12 @@ section {
 
 .about-text {
     background: var(--white);
-    padding: 3rem;
-    border-radius: 20px;
+    padding: 4rem;
+    border-radius: 30px;
     box-shadow: var(--shadow-lg);
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(14, 165, 233, 0.1);
 }
 
 .about-text::before {
@@ -811,12 +813,13 @@ section {
 .vision-card,
 .objectives-card {
     background: var(--white);
-    padding: 3rem;
-    border-radius: 20px;
+    padding: 4rem;
+    border-radius: 30px;
     box-shadow: var(--shadow-lg);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(14, 165, 233, 0.1);
 }
 
 .vision-card::before,
@@ -834,8 +837,9 @@ section {
 
 .vision-card:hover,
 .objectives-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-15px);
+    box-shadow: var(--shadow-xl), var(--shadow-blue);
+    border-color: rgba(14, 165, 233, 0.3);
 }
 
 .vision-card h3,
@@ -1139,13 +1143,14 @@ section {
 
 .work-step {
     background: var(--white);
-    padding: 3rem 2.5rem;
-    border-radius: 25px;
+    padding: 3.5rem 3rem;
+    border-radius: 30px;
     text-align: center;
     box-shadow: var(--shadow-lg);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(249, 115, 22, 0.1);
 }
 
 .work-step::after {
@@ -1165,8 +1170,9 @@ section {
 }
 
 .work-step:hover {
-    transform: translateY(-15px) scale(1.03);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-20px) scale(1.04);
+    box-shadow: var(--shadow-xl), var(--shadow-orange);
+    border-color: rgba(249, 115, 22, 0.3);
 }
 
 .step-number {
@@ -1327,11 +1333,12 @@ section {
 
 .contact-form {
     background: var(--white);
-    padding: 3.5rem;
-    border-radius: 25px;
+    padding: 4rem;
+    border-radius: 30px;
     box-shadow: var(--shadow-xl);
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(14, 165, 233, 0.1);
 }
 
 .contact-form::before {
