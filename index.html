@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="حل متكامل لإدارة المركبات والمناديب - نظام لوجستيات احترافي">
+  <title>داش كورد | حل متكامل لإدارة المركبات والمناديب</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Readex+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-logo">
+        <img src="logo.png" alt="DASHCORD" class="dashcord-logo-img">
+      </a>
+      
+      <div class="navbar-menu">
+        <a href="index.html" class="active"><span>الرئيسية</span></a>
+        <a href="vehicles.html"><span>المركبات</span></a>
+        <a href="riders.html"><span>المناديب</span></a>
+        <a href="settlements.html"><span>التسويات</span></a>
+        <a href="reports.html"><span>التقارير</span></a>
+        <a href="alerts.html"><span>التنبيهات</span></a>
+        <a href="support.html"><span>الدعم</span></a>
+        <a href="support.html#contact" class="navbar-cta">تواصل معنا</a>
+      </div>
+      
+      <button class="mobile-toggle" aria-label="القائمة">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section - New Enhanced Version -->
+  <section class="hero hero-v2">
+    <div class="hero-grid"></div>
+    <div class="hero-gradient-orbs">
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
+    </div>
+    
+    <div class="container">
+      <div class="hero-layout">
+        <!-- Left Content -->
+        <div class="hero-content-v2">
+          <div class="hero-badge-v2">
+            <span class="badge-pulse"></span>
+            <i class="fas fa-sparkles"></i>
+            <span>منصة ذكية متكاملة</span>
+          </div>
+          
+          <h1 class="hero-title-v2">
+            <span class="title-gradient">داش كورد</span>
+            <br>
+            ثورة في إدارة اللوجستيات
+          </h1>
+          
+          <p class="hero-subtitle-v2">
+            حوّل عملياتك اللوجستية إلى تجربة سلسة وذكية. منصة واحدة شاملة لإدارة الأسطول، المناديب، التسويات، والتقارير مع تتبع لحظي ودعم 24/7
+          </p>
+          
+          <!-- Quick Stats -->
+          <div class="hero-quick-stats">
+            <div class="quick-stat">
+              <div class="stat-icon">
+                <i class="fas fa-truck"></i>
+              </div>
+              <div class="stat-content">
+                <h4>5000+</h4>
+                <p>مركبة نشطة</p>
+              </div>
+            </div>
+            <div class="quick-stat">
+              <div class="stat-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="stat-content">
+                <h4>10,000+</h4>
+                <p>مندوب موثوق</p>
+              </div>
+            </div>
+            <div class="quick-stat">
+              <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-content">
+                <h4>24/7</h4>
+                <p>تتبع مباشر</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- CTA Buttons -->
+          <div class="hero-cta-group">
+            <a href="support.html#contact" class="btn-hero-primary">
+              <span class="btn-content">
+                <i class="fas fa-rocket"></i>
+                <span>جرّب مجاناً لمدة 7 أيام</span>
+              </span>
+              <span class="btn-shine"></span>
+            </a>
+            <a href="#features" class="btn-hero-secondary">
+              <i class="fas fa-play-circle"></i>
+              <span>شاهد العرض التوضيحي</span>
+            </a>
+          </div>
+          
+          <!-- Trust Badges -->
+          <div class="hero-trust">
+            <div class="trust-item">
+              <i class="fas fa-shield-check"></i>
+              <span>آمن 100%</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-award"></i>
+              <span>معتمد ISO</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-headset"></i>
+              <span>دعم فوري</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Visual -->
+        <div class="hero-visual">
+          <div class="dashboard-mockup">
+            <div class="mockup-window">
+              <div class="window-header">
+                <div class="window-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="window-title">لوحة التحكم - داش كورد</div>
+              </div>
+              <div class="window-content">
+                <!-- Mini Dashboard Preview -->
+                <div class="mini-dashboard">
+                  <div class="dashboard-card">
+                    <div class="card-icon green">
+                      <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="card-info">
+                      <h5>المركبات النشطة</h5>
+                      <h3>847</h3>
+                      <span class="trend up"><i class="fas fa-arrow-up"></i> 12%</span>
+                    </div>
+                  </div>
+                  <div class="dashboard-card">
+                    <div class="card-icon blue">
+                      <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-info">
+                      <h5>المناديب</h5>
+                      <h3>1,254</h3>
+                      <span class="trend up"><i class="fas fa-arrow-up"></i> 8%</span>
+                    </div>
+                  </div>
+                  <div class="dashboard-card">
+                    <div class="card-icon purple">
+                      <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="card-info">
+                      <h5>الطلبات اليوم</h5>
+                      <h3>3,891</h3>
+                      <span class="trend up"><i class="fas fa-arrow-up"></i> 24%</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Chart Preview -->
+                <div class="mini-chart">
+                  <div class="chart-bars">
+                    <div class="bar" style="height: 60%;"></div>
+                    <div class="bar" style="height: 80%;"></div>
+                    <div class="bar" style="height: 45%;"></div>
+                    <div class="bar" style="height: 90%;"></div>
+                    <div class="bar" style="height: 70%;"></div>
+                    <div class="bar" style="height: 85%;"></div>
+                    <div class="bar active" style="height: 95%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Floating Elements -->
+            <div class="floating-element" style="top: 10%; left: -10%;">
+              <i class="fas fa-bell"></i>
+              <span>تنبيه جديد</span>
+            </div>
+            <div class="floating-element" style="bottom: 20%; right: -10%;">
+              <i class="fas fa-check-circle"></i>
+              <span>تم التسليم</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Partners/Integrations -->
+      <div class="hero-partners">
+        <p class="partners-label">يثق بنا شركاء من جميع أنحاء المملكة</p>
+        <div class="partners-logos">
+          <div class="partner-logo">
+            <i class="fas fa-utensils"></i>
+            <span>Jahez</span>
+          </div>
+          <div class="partner-logo">
+            <i class="fas fa-burger"></i>
+            <span>HungerStation</span>
+          </div>
+          <div class="partner-logo">
+            <i class="fas fa-bowl-food"></i>
+            <span>Keeta</span>
+          </div>
+          <div class="partner-logo">
+            <i class="fas fa-pizza-slice"></i>
+            <span>The Chefs</span>
+          </div>
+          <div class="partner-logo">
+            <i class="fas fa-box"></i>
+            <span>Toyo</span>
+          </div>
+          <div class="partner-logo">
+            <i class="fas fa-shipping-fast"></i>
+            <span>Parcels</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 
+  ============================================
+  OLD HERO SECTION (BACKUP)
+  ============================================
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-particles">
+      <div class="hero-particle" style="right: 10%; animation-delay: 0s;"></div>
+      <div class="hero-particle" style="right: 20%; animation-delay: 2s;"></div>
+      <div class="hero-particle" style="right: 30%; animation-delay: 4s;"></div>
+      <div class="hero-particle" style="right: 50%; animation-delay: 6s;"></div>
+      <div class="hero-particle" style="right: 70%; animation-delay: 8s;"></div>
+      <div class="hero-particle" style="right: 80%; animation-delay: 10s;"></div>
+      <div class="hero-particle" style="right: 90%; animation-delay: 12s;"></div>
+    </div>
+    
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-bolt"></i>
+          <span>نظام إدارة لوجستيات متكامل</span>
+        </div>
+        
+        <h1>حل متكامل لإدارة المركبات والمناديب</h1>
+        
+        <p class="hero-subtitle">
+          نقدم لك منصة احترافية شاملة تمكنك من إدارة أسطولك بكفاءة عالية، من خلال أدوات متطورة للتتبع والتحليل والتقارير
+        </p>
+        
+        <div class="hero-features">
+          <div class="hero-feature">
+            <i class="fas fa-car"></i>
+            <span>إدارة مركبات</span>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-file-signature"></i>
+            <span>تفويض</span>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-clipboard-check"></i>
+            <span>فحص مركبات</span>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-users"></i>
+            <span>إدارة مناديب</span>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-calendar-alt"></i>
+            <span>شيفتات</span>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-coins"></i>
+            <span>تسويات</span>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-chart-line"></i>
+            <span>تقارير</span>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-bell"></i>
+            <span>تنبيهات</span>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-headset"></i>
+            <span>دعم فني</span>
+          </div>
+        </div>
+        
+        <div class="d-flex gap-3 flex-wrap mb-5">
+          <a href="support.html#contact" class="btn btn-primary btn-lg">
+            <i class="fas fa-rocket"></i>
+            <span>ابدأ الآن</span>
+          </a>
+          <a href="#features" class="btn btn-outline btn-lg">
+            <i class="fas fa-play-circle"></i>
+            <span>اكتشف المزيد</span>
+          </a>
+        </div>
+        
+        <div class="hero-brands">
+          <p class="hero-brands-label">متوافق مع منصات التوصيل الرائدة</p>
+          <div class="hero-brands-logos">
+            <div class="brand-logo">Jahez</div>
+            <div class="brand-logo">HungerStation</div>
+            <div class="brand-logo">Keeta</div>
+            <div class="brand-logo">The Chefs</div>
+            <div class="brand-logo">Toyo</div>
+            <div class="brand-logo">Parcels</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  ============================================
+  END OLD HERO SECTION
+  ============================================
+  -->
+
+  <!-- Features Section -->
+  <section id="features" class="section features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>خدماتنا الأساسية</h2>
+        <p>مجموعة متكاملة من الأدوات والخدمات المصممة خصيصاً لتلبية احتياجات قطاع اللوجستيات والتوصيل</p>
+      </div>
+      
+      <div class="features-grid">
+        <!-- Feature 1: Vehicle Management -->
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h3>إدارة المركبات</h3>
+          <p>نظام شامل لإدارة أسطولك بالكامل، يشمل ملفات المركبات، التأمين، الصيانة، التفاويض، والفحص الدوري مع توثيق كامل بالصور والمستندات.</p>
+          <a href="vehicles.html" class="feature-link">
+            <span>استكشف المزيد</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+        
+        <!-- Feature 2: Rider Management -->
+        <div class="feature-card fade-in delay-1">
+          <div class="feature-icon">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <h3>إدارة المناديب</h3>
+          <p>أدر فريق التوصيل باحترافية من خلال ملفات شاملة، متابعة الأداء، نظام الشيفتات، الحضور والانصراف، والإنتاجية اليومية.</p>
+          <a href="riders.html" class="feature-link">
+            <span>استكشف المزيد</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+        
+        <!-- Feature 3: Financial Settlements -->
+        <div class="feature-card fade-in delay-2">
+          <div class="feature-icon">
+            <i class="fas fa-wallet"></i>
+          </div>
+          <h3>التسويات المالية</h3>
+          <p>لوحة تحكم مالية متكاملة لإدارة الكاش، الخصومات، المكافآت، العمولات، مع تحليلات دقيقة وكشوف حسابات تفصيلية.</p>
+          <a href="settlements.html" class="feature-link">
+            <span>استكشف المزيد</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+        
+        <!-- Feature 4: Reports & Alerts -->
+        <div class="feature-card fade-in delay-3">
+          <div class="feature-icon">
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <h3>التقارير والتنبيهات</h3>
+          <p>تقارير تفصيلية للأداء والشيفتات والمركبات والتسويات، مع نظام تنبيهات ذكي للمتابعة الفورية واتخاذ القرارات السريعة.</p>
+          <a href="reports.html" class="feature-link">
+            <span>استكشف المزيد</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item fade-in">
+          <div class="stat-number">+500</div>
+          <div class="stat-label">مركبة مُدارة</div>
+        </div>
+        <div class="stat-item fade-in delay-1">
+          <div class="stat-number">+1200</div>
+          <div class="stat-label">منديب نشط</div>
+        </div>
+        <div class="stat-item fade-in delay-2">
+          <div class="stat-number">+50K</div>
+          <div class="stat-label">شحنة شهرياً</div>
+        </div>
+        <div class="stat-item fade-in delay-3">
+          <div class="stat-number">99.9%</div>
+          <div class="stat-label">نسبة الرضا</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Ecosystem Section -->
+  <section class="section" style="background: linear-gradient(180deg, #0f172a, #1e293b); padding: 120px 0; position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.1), transparent 70%);"></div>
+    
+    <div class="container" style="position: relative; z-index: 10;">
+      <div class="section-header text-center" style="margin-bottom: 80px;">
+        <h2 style="color: white; font-size: 2.5rem; margin-bottom: 16px;">منظومة متكاملة</h2>
+        <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem;">جميع الخدمات والمزايا في منصة واحدة</p>
+      </div>
+      
+      <div style="max-width: 1100px; margin: 0 auto; position: relative; min-height: 700px;">
+        <!-- SVG Lines Layer -->
+        <svg width="1100" height="700" style="position: absolute; top: 0; left: 0; z-index: 5; pointer-events: none;">
+          <defs>
+            <!-- Glow filter -->
+            <filter id="lineGlow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          
+          <!-- Center point: 550, 350 -->
+          <!-- All lines start from center (550, 350) -->
+          
+          <!-- Line to إدارة مركبات (Top: 550, 55) -->
+          <line x1="550" y1="350" x2="550" y2="55" stroke="#06b6d4" stroke-width="4" stroke-dasharray="12 6" filter="url(#lineGlow)">
+            <animate attributeName="stroke-dashoffset" from="0" to="36" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+          </line>
+          
+          <!-- Line to تفويض (Top Right: 935, 135) -->
+          <line x1="550" y1="350" x2="935" y2="135" stroke="#06b6d4" stroke-width="3" stroke-dasharray="12 6" filter="url(#lineGlow)">
+            <animate attributeName="stroke-dashoffset" from="0" to="36" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+          </line>
+          
+          <!-- Line to فحص مركبات (Right: 1025, 350) -->
+          <line x1="550" y1="350" x2="1025" y2="350" stroke="#06b6d4" stroke-width="3" stroke-dasharray="12 6" filter="url(#lineGlow)">
+            <animate attributeName="stroke-dashoffset" from="0" to="36" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+          </line>
+          
+          <!-- Line to إدارة مناديب (Bottom Right: 935, 565) -->
+          <line x1="550" y1="350" x2="935" y2="565" stroke="#06b6d4" stroke-width="3" stroke-dasharray="12 6" filter="url(#lineGlow)">
+            <animate attributeName="stroke-dashoffset" from="0" to="36" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+          </line>
+          
+          <!-- Line to شيفتات (Bottom: 550, 645) -->
+          <line x1="550" y1="350" x2="550" y2="645" stroke="#06b6d4" stroke-width="4" stroke-dasharray="12 6" filter="url(#lineGlow)">
+            <animate attributeName="stroke-dashoffset" from="0" to="36" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+          </line>
+          
+          <!-- Line to تسويات (Bottom Left: 165, 565) -->
+          <line x1="550" y1="350" x2="165" y2="565" stroke="#06b6d4" stroke-width="3" stroke-dasharray="12 6" filter="url(#lineGlow)">
+            <animate attributeName="stroke-dashoffset" from="0" to="36" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+          </line>
+          
+          <!-- Line to تقارير (Left: 75, 350) -->
+          <line x1="550" y1="350" x2="75" y2="350" stroke="#06b6d4" stroke-width="3" stroke-dasharray="12 6" filter="url(#lineGlow)">
+            <animate attributeName="stroke-dashoffset" from="0" to="36" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+          </line>
+          
+          <!-- Line to تنبيهات (Top Left: 165, 135) -->
+          <line x1="550" y1="350" x2="165" y2="135" stroke="#06b6d4" stroke-width="3" stroke-dasharray="12 6" filter="url(#lineGlow)">
+            <animate attributeName="stroke-dashoffset" from="0" to="36" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+          </line>
+          
+          <!-- Line to دعم فني (Top Left-Center: 330, 95) -->
+          <line x1="550" y1="350" x2="365" y2="95" stroke="#06b6d4" stroke-width="4" stroke-dasharray="12 6" filter="url(#lineGlow)">
+            <animate attributeName="stroke-dashoffset" from="0" to="36" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+          </line>
+          
+          <!-- Animated particles on lines -->
+          <circle r="6" fill="#06b6d4" filter="url(#lineGlow)">
+            <animateMotion dur="3s" repeatCount="indefinite" path="M 550 350 L 550 110"/>
+          </circle>
+          <circle r="6" fill="#8b5cf6" filter="url(#lineGlow)">
+            <animateMotion dur="3s" repeatCount="indefinite" path="M 550 350 L 935 135"/>
+          </circle>
+          <circle r="6" fill="#10b981" filter="url(#lineGlow)">
+            <animateMotion dur="3s" repeatCount="indefinite" path="M 550 350 L 1025 350"/>
+          </circle>
+        </svg>
+        
+        <!-- Central Logo -->
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 20;">
+          <div style="width: 200px; height: 200px; background: linear-gradient(135deg, #06b6d4, #0284c7); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(6, 182, 212, 0.4); animation: pulse-glow 3s ease-in-out infinite; padding: 30px;">
+            <img src="logo.png" alt="DASHCORD" style="width: 700px; height: auto;">
+          </div>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 240px; height: 240px; border: 2px solid rgba(6, 182, 212, 0.3); border-radius: 50%; animation: rotate-ring 20s linear infinite;"></div>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 280px; height: 280px; border: 2px dashed rgba(6, 182, 212, 0.2); border-radius: 50%; animation: rotate-ring-reverse 25s linear infinite;"></div>
+        </div>
+        
+        <!-- Feature Circles -->
+        <!-- 1. إدارة مركبات - Top -->
+        <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%);">
+
+          <div style="width: 110px; height: 110px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 2px solid rgba(6, 182, 212, 0.3); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease; animation: float 3s ease-in-out infinite;" onmouseover="this.style.transform='scale(1.1)'; this.style.borderColor='#06b6d4'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(6, 182, 212, 0.3)'">
+            <i class="fas fa-car" style="font-size: 2rem; color: #06b6d4; margin-bottom: 8px;"></i>
+            <span style="color: white; font-size: 0.85rem; font-weight: 600; text-align: center;">إدارة مركبات</span>
+          </div>
+        </div>
+        
+        <!-- 2. تفويض - Top Right -->
+        <div style="position: absolute; top: 80px; right: 80px;">
+          <div style="width: 110px; height: 110px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 2px solid rgba(139, 92, 246, 0.3); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease; animation: float 3s ease-in-out infinite 0.5s;" onmouseover="this.style.transform='scale(1.1)'; this.style.borderColor='#8b5cf6'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(139, 92, 246, 0.3)'">
+            <i class="fas fa-file-signature" style="font-size: 2rem; color: #8b5cf6; margin-bottom: 8px;"></i>
+            <span style="color: white; font-size: 0.85rem; font-weight: 600; text-align: center;">تفويض</span>
+          </div>
+        </div>
+        
+        <!-- 3. فحص مركبات - Right -->
+        <div style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%);">
+          <div style="width: 110px; height: 110px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 2px solid rgba(16, 185, 129, 0.3); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease; animation: float 3s ease-in-out infinite 1s;" onmouseover="this.style.transform='scale(1.1)'; this.style.borderColor='#10b981'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(16, 185, 129, 0.3)'">
+            <i class="fas fa-clipboard-check" style="font-size: 2rem; color: #10b981; margin-bottom: 8px;"></i>
+            <span style="color: white; font-size: 0.85rem; font-weight: 600; text-align: center;">فحص مركبات</span>
+          </div>
+        </div>
+        
+        <!-- 4. إدارة مناديب - Bottom Right -->
+        <div style="position: absolute; bottom: 80px; right: 80px;">
+          <div style="width: 110px; height: 110px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 2px solid rgba(245, 158, 11, 0.3); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease; animation: float 3s ease-in-out infinite 1.5s;" onmouseover="this.style.transform='scale(1.1)'; this.style.borderColor='#f59e0b'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(245, 158, 11, 0.3)'">
+            <i class="fas fa-users" style="font-size: 2rem; color: #f59e0b; margin-bottom: 8px;"></i>
+            <span style="color: white; font-size: 0.85rem; font-weight: 600; text-align: center;">إدارة مناديب</span>
+          </div>
+        </div>
+        
+        <!-- 5. شيفتات - Bottom -->
+        <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);">
+          <div style="width: 110px; height: 110px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 2px solid rgba(239, 68, 68, 0.3); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease; animation: float 3s ease-in-out infinite 2s;" onmouseover="this.style.transform='scale(1.1)'; this.style.borderColor='#ef4444'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(239, 68, 68, 0.3)'">
+            <i class="fas fa-calendar-alt" style="font-size: 2rem; color: #ef4444; margin-bottom: 8px;"></i>
+            <span style="color: white; font-size: 0.85rem; font-weight: 600; text-align: center;">شيفتات</span>
+          </div>
+        </div>
+        
+        <!-- 6. تسويات - Bottom Left -->
+        <div style="position: absolute; bottom: 80px; left: 80px;">
+          <div style="width: 110px; height: 110px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 2px solid rgba(124, 58, 237, 0.3); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease; animation: float 3s ease-in-out infinite 2.5s;" onmouseover="this.style.transform='scale(1.1)'; this.style.borderColor='#7c3aed'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(124, 58, 237, 0.3)'">
+            <i class="fas fa-coins" style="font-size: 2rem; color: #7c3aed; margin-bottom: 8px;"></i>
+            <span style="color: white; font-size: 0.85rem; font-weight: 600; text-align: center;">تسويات</span>
+          </div>
+        </div>
+        
+        <!-- 7. تقارير - Left -->
+        <div style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%);">
+          <div style="width: 110px; height: 110px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 2px solid rgba(37, 99, 235, 0.3); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease; animation: float 3s ease-in-out infinite 3s;" onmouseover="this.style.transform='scale(1.1)'; this.style.borderColor='#2563eb'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(37, 99, 235, 0.3)'">
+            <i class="fas fa-chart-pie" style="font-size: 2rem; color: #2563eb; margin-bottom: 8px;"></i>
+            <span style="color: white; font-size: 0.85rem; font-weight: 600; text-align: center;">تقارير</span>
+          </div>
+        </div>
+        
+        <!-- 8. تنبيهات - Top Left -->
+        <div style="position: absolute; top: 80px; left: 80px;">
+          <div style="width: 110px; height: 110px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 2px solid rgba(251, 191, 36, 0.3); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease; animation: float 3s ease-in-out infinite 3.5s;" onmouseover="this.style.transform='scale(1.1)'; this.style.borderColor='#fbbf24'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(251, 191, 36, 0.3)'">
+            <i class="fas fa-bell" style="font-size: 2rem; color: #fbbf24; margin-bottom: 8px;"></i>
+            <span style="color: white; font-size: 0.85rem; font-weight: 600; text-align: center;">تنبيهات</span>
+          </div>
+        </div>
+        
+        <!-- 9. دعم فني - Top Center (between Top and Top Left) -->
+        <div style="position: absolute; top: 40px; left: 30%;">
+          <div style="width: 110px; height: 110px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 2px solid rgba(236, 72, 153, 0.3); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease; animation: float 3s ease-in-out infinite 4s;" onmouseover="this.style.transform='scale(1.1)'; this.style.borderColor='#ec4899'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(236, 72, 153, 0.3)'">
+            <i class="fas fa-headset" style="font-size: 2rem; color: #ec4899; margin-bottom: 8px;"></i>
+            <span style="color: white; font-size: 0.85rem; font-weight: 600; text-align: center;">دعم فني</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <style>
+      @keyframes pulse-glow {
+        0%, 100% {
+          box-shadow: 0 20px 60px rgba(6, 182, 212, 0.4), 0 0 0 0 rgba(6, 182, 212, 0.7);
+        }
+        50% {
+          box-shadow: 0 20px 80px rgba(6, 182, 212, 0.6), 0 0 0 20px rgba(6, 182, 212, 0);
+        }
+      }
+      
+      @keyframes rotate-ring {
+        from { transform: translate(-50%, -50%) rotate(0deg); }
+        to { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+      
+      @keyframes rotate-ring-reverse {
+        from { transform: translate(-50%, -50%) rotate(0deg); }
+        to { transform: translate(-50%, -50%) rotate(-360deg); }
+      }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+    </style>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header">
+        <h2>كيف يعمل النظام</h2>
+        <p>خطوات بسيطة للبدء في استخدام منصتنا وتحقيق أقصى استفادة من خدماتنا</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-user-plus"></i>
+          </div>
+          <h3>1. التسجيل</h3>
+          <p>سجّل حسابك في دقائق معدودة وأضف بيانات شركتك الأساسية للبدء في استخدام النظام.</p>
+        </div>
+        
+        <div class="feature-card fade-in delay-1">
+          <div class="feature-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3>2. الإعداد</h3>
+          <p>أضف مركباتك ومنادّيبك وحدد الشيفتات والسياسات المالية حسب متطلبات عملك.</p>
+        </div>
+        
+        <div class="feature-card fade-in delay-2">
+          <div class="feature-icon">
+            <i class="fas fa-play"></i>
+          </div>
+          <h3>3. التشغيل</h3>
+          <p>ابدأ العمليات اليومية مع تتبع كامل للأداء والتسويات والتقارير الفورية.</p>
+        </div>
+        
+        <div class="feature-card fade-in delay-3">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>4. النمو</h3>
+          <p>حلل البيانات واتخذ قرارات ذكية لتحسين الكفاءة وزيادة الإنتاجية باستمرار.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section" style="background: linear-gradient(135deg, var(--primary-600), var(--primary-800)); position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 30% 50%, rgba(6, 182, 212, 0.2), transparent 50%);"></div>
+    <div class="container" style="position: relative; z-index: 10;">
+      <div class="text-center">
+        <h2 style="color: white; margin-bottom: 20px;">جاهز للبدء في تحسين عملياتك؟</h2>
+        <p style="color: var(--gray-300); font-size: 1.25rem; max-width: 600px; margin: 0 auto 40px;">
+          انضم إلى مئات الشركات التي تستخدم داش كورد لإدارة أساطيلها بكفاءة واحترافية
+        </p>
+        <div class="d-flex gap-3 justify-center flex-wrap">
+          <a href="support.html#contact" class="btn btn-secondary btn-lg">
+            <i class="fas fa-rocket"></i>
+            <span>ابدأ مجاناً</span>
+          </a>
+          <a href="support.html" class="btn btn-outline btn-lg">
+            <i class="fas fa-phone"></i>
+            <span>تحدث مع فريقنا</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="logo.png" alt="DASHCORD" class="dashcord-logo-img">
+          </div>
+          <p>منصة متكاملة لإدارة أساطيل التوصيل والمناديب باحترافية عالية، نساعدك على تحقيق أقصى كفاءة في عملياتك اللوجستية.</p>
+        </div>
+        
+        <div class="footer-column">
+          <h5>روابط سريعة</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="vehicles.html">إدارة المركبات</a></li>
+            <li><a href="riders.html">إدارة المناديب</a></li>
+            <li><a href="settlements.html">التسويات المالية</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h5>المزيد</h5>
+          <ul class="footer-links">
+            <li><a href="reports.html">التقارير</a></li>
+            <li><a href="alerts.html">التنبيهات</a></li>
+            <li><a href="support.html">الدعم الفني</a></li>
+            <li><a href="support.html#faq">الأسئلة الشائعة</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h5>قانوني</h5>
+          <ul class="footer-links">
+            <li><a href="#">سياسة الخصوصية</a></li>
+            <li><a href="#">الشروط والأحكام</a></li>
+            <li><a href="#">سياسة الاستخدام</a></li>
+            <li><a href="support.html#contact">تواصل معنا</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 داش كورد. جميع الحقوق محفوظة.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" aria-label="العودة للأعلى">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
+

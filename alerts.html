@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="التنبيهات والإشعارات - نظام تنبيهات ذكي">
+  <title>التنبيهات | داش كورد</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Readex+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* === ALERTS PAGE CUSTOM STYLES === */
+    
+    .alerts-hero {
+      min-height: 90vh;
+      background: linear-gradient(165deg, #0f172a 0%, #1e293b 40%, #334155 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+    }
+    
+    .alerts-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 40%);
+    }
+    
+    .hero-grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    
+    .alerts-hero-content {
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    
+    .hero-text h1 {
+      color: var(--white);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+    
+    .hero-text h1 span {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-text p {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.2rem;
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+    
+    .hero-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 32px;
+    }
+    
+    .hero-stat-box {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+    
+    .hero-stat-box-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 8px;
+    }
+    
+    .hero-stat-box-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.8);
+    }
+    
+    /* Alerts Dashboard */
+    .alerts-dashboard {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-2xl);
+      padding: 32px;
+      backdrop-filter: blur(20px);
+    }
+    
+    .dashboard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    
+    .dashboard-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      font-weight: 600;
+    }
+    
+    .dashboard-title i {
+      color: #fbbf24;
+      animation: ring 2s ease-in-out infinite;
+    }
+    
+    @keyframes ring {
+      0%, 100% { transform: rotate(0deg); }
+      10%, 30% { transform: rotate(-10deg); }
+      20% { transform: rotate(10deg); }
+    }
+    
+    .notification-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(239, 68, 68, 0.2);
+      border-radius: 100px;
+      color: #ef4444;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    
+    .notification-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: #ef4444;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+    
+    .alert-items {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .alert-item {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .alert-item:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+    
+    .alert-item-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    
+    .alert-item-icon.critical {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+    }
+    
+    .alert-item-icon.warning {
+      background: rgba(245, 158, 11, 0.2);
+      color: #f59e0b;
+    }
+    
+    .alert-item-icon.info {
+      background: rgba(59, 130, 246, 0.2);
+      color: #3b82f6;
+    }
+    
+    .alert-item-content {
+      flex: 1;
+    }
+    
+    .alert-item-title {
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .alert-item-time {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+    }
+    
+    /* Alert Types Section */
+    .alert-types-section {
+      padding: 100px 0;
+      background: white;
+    }
+    
+    .alert-types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 50px;
+    }
+    
+    .alert-type-card {
+      background: white;
+      border: 2px solid var(--gray-200);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .alert-type-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ef4444, #dc2626);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .alert-type-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .alert-type-card:hover {
+      border-color: #ef4444;
+      box-shadow: 0 12px 32px rgba(239, 68, 68, 0.15);
+      transform: translateY(-6px);
+    }
+    
+    .alert-type-icon-large {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 24px;
+    }
+    
+    .alert-type-icon-large.warning {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+    }
+    
+    .alert-type-icon-large.info {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+    }
+    
+    .alert-type-icon-large.success {
+      background: linear-gradient(135deg, #10b981, #059669);
+    }
+    
+    .alert-type-card h3 {
+      font-size: 1.3rem;
+      color: var(--gray-900);
+      margin-bottom: 12px;
+    }
+    
+    .alert-type-card p {
+      color: var(--gray-600);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    
+    .alert-examples {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .alert-examples li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      color: var(--gray-700);
+      font-size: 0.9rem;
+    }
+    
+    .alert-examples li i {
+      color: #ef4444;
+      font-size: 0.7rem;
+    }
+    
+    /* Features Section */
+    .features-section {
+      padding: 100px 0;
+      background: linear-gradient(180deg, var(--gray-50), white);
+    }
+    
+    .features-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 50px;
+    }
+    
+    .features-visual {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-2xl);
+      padding: 48px;
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .notification-demo {
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      max-width: 350px;
+    }
+    
+    .notification-demo-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .notification-demo-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+    
+    .notification-demo-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gray-900);
+    }
+    
+    .notification-demo-body {
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    
+    .notification-demo-actions {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .notification-demo-btn {
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .notification-demo-btn.primary {
+      background: #ef4444;
+      color: white;
+      border: none;
+    }
+    
+    .notification-demo-btn.secondary {
+      background: transparent;
+      color: var(--gray-700);
+      border: 1px solid var(--gray-300);
+    }
+    
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    
+    .feature-item-large {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .feature-item-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    
+    .feature-item-content h3 {
+      font-size: 1.2rem;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+    }
+    
+    .feature-item-content p {
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+    
+    @media (max-width: 768px) {
+      .alerts-hero-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero-stats-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .alert-types-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .features-showcase {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-logo">
+        <img src="logo.png" alt="DASHCORD" class="dashcord-logo-img">
+      </a>
+      
+      <div class="navbar-menu">
+        <a href="index.html"><span>الرئيسية</span></a>
+        <a href="vehicles.html"><span>المركبات</span></a>
+        <a href="riders.html"><span>المناديب</span></a>
+        <a href="settlements.html"><span>التسويات</span></a>
+        <a href="reports.html"><span>التقارير</span></a>
+        <a href="alerts.html" class="active"><span>التنبيهات</span></a>
+        <a href="support.html"><span>الدعم</span></a>
+        <a href="support.html#contact" class="navbar-cta">تواصل معنا</a>
+      </div>
+      
+      <button class="mobile-toggle" aria-label="القائمة">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="alerts-hero">
+    <div class="hero-grid-pattern"></div>
+    <div class="container">
+      <div class="alerts-hero-content">
+        <div class="hero-text">
+          <h1>نظام تنبيهات <span>ذكي</span> ومتقدم</h1>
+          <p>ابقَ على اطلاع دائم بكل ما يحدث في عملياتك من خلال تنبيهات فورية وإشعارات ذكية لجميع الأحداث المهمة</p>
+          
+          <div class="hero-stats-row">
+            <div class="hero-stat-box">
+              <div class="hero-stat-box-value">24/7</div>
+              <div class="hero-stat-box-label">مراقبة مستمرة</div>
+            </div>
+            <div class="hero-stat-box">
+              <div class="hero-stat-box-value">< 1s</div>
+              <div class="hero-stat-box-label">استجابة فورية</div>
+            </div>
+            <div class="hero-stat-box">
+              <div class="hero-stat-box-value">100%</div>
+              <div class="hero-stat-box-label">معدل التسليم</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Alerts Dashboard -->
+        <div class="alerts-dashboard">
+          <div class="dashboard-header">
+            <div class="dashboard-title">
+              <i class="fas fa-bell"></i>
+              <span>التنبيهات النشطة</span>
+            </div>
+            <div class="notification-badge">7 جديد</div>
+          </div>
+          
+          <div class="alert-items">
+            <div class="alert-item">
+              <div class="alert-item-icon critical">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="alert-item-content">
+                <div class="alert-item-title">تجاوز حد الكاش اليومي</div>
+                <div class="alert-item-time">منذ 5 دقائق</div>
+              </div>
+            </div>
+            
+            <div class="alert-item">
+              <div class="alert-item-icon warning">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="alert-item-content">
+                <div class="alert-item-title">تأخر في موعد الصيانة</div>
+                <div class="alert-item-time">منذ 12 دقيقة</div>
+              </div>
+            </div>
+            
+            <div class="alert-item">
+              <div class="alert-item-icon info">
+                <i class="fas fa-info-circle"></i>
+              </div>
+              <div class="alert-item-content">
+                <div class="alert-item-title">تحديث في نظام التسويات</div>
+                <div class="alert-item-time">منذ 25 دقيقة</div>
+              </div>
+            </div>
+            
+            <div class="alert-item">
+              <div class="alert-item-icon warning">
+                <i class="fas fa-gas-pump"></i>
+              </div>
+              <div class="alert-item-content">
+                <div class="alert-item-title">انخفاض مستوى الوقود</div>
+                <div class="alert-item-time">منذ ساعة</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alert Types Section -->
+  <section class="alert-types-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>أنواع التنبيهات</h2>
+        <p>تغطية شاملة لجميع الأحداث والمواقف المهمة</p>
+      </div>
+      
+      <div class="alert-types-grid">
+        <div class="alert-type-card fade-in">
+          <div class="alert-type-icon-large">
+            <i class="fas fa-chart-line-down"></i>
+          </div>
+          <h3>تنبيهات الأداء</h3>
+          <p>إشعارات فورية عند انخفاض الأداء أو وجود مشاكل تشغيلية</p>
+          <ul class="alert-examples">
+            <li><i class="fas fa-circle"></i> انخفاض معدل الإنجاز</li>
+            <li><i class="fas fa-circle"></i> زيادة وقت التوصيل</li>
+            <li><i class="fas fa-circle"></i> تراجع التقييمات</li>
+          </ul>
+        </div>
+        
+        <div class="alert-type-card fade-in delay-1">
+          <div class="alert-type-icon-large warning">
+            <i class="fas fa-wallet"></i>
+          </div>
+          <h3>تنبيهات مالية</h3>
+          <p>متابعة دقيقة للحدود المالية والمعاملات المهمة</p>
+          <ul class="alert-examples">
+            <li><i class="fas fa-circle"></i> تجاوز حد الكاش</li>
+            <li><i class="fas fa-circle"></i> معاملات كبيرة</li>
+            <li><i class="fas fa-circle"></i> مواعيد التسويات</li>
+          </ul>
+        </div>
+        
+        <div class="alert-type-card fade-in delay-2">
+          <div class="alert-type-icon-large info">
+            <i class="fas fa-car-burst"></i>
+          </div>
+          <h3>تنبيهات المركبات</h3>
+          <p>إشعارات عن حالة المركبات والصيانة والمشاكل الفنية</p>
+          <ul class="alert-examples">
+            <li><i class="fas fa-circle"></i> موعد الصيانة</li>
+            <li><i class="fas fa-circle"></i> مشاكل ميكانيكية</li>
+            <li><i class="fas fa-circle"></i> انتهاء التأمين</li>
+          </ul>
+        </div>
+        
+        <div class="alert-type-card fade-in delay-3">
+          <div class="alert-type-icon-large">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <h3>المستندات والتراخيص</h3>
+          <p>تذكيرات بمواعيد انتهاء المستندات والتراخيص</p>
+          <ul class="alert-examples">
+            <li><i class="fas fa-circle"></i> انتهاء الرخص</li>
+            <li><i class="fas fa-circle"></i> تجديد المستندات</li>
+            <li><i class="fas fa-circle"></i> ملفات ناقصة</li>
+          </ul>
+        </div>
+        
+        <div class="alert-type-card fade-in delay-4">
+          <div class="alert-type-icon-large success">
+            <i class="fas fa-user-clock"></i>
+          </div>
+          <h3>الحضور والانصراف</h3>
+          <p>متابعة دقيقة لأوقات الحضور والتأخيرات والغياب</p>
+          <ul class="alert-examples">
+            <li><i class="fas fa-circle"></i> تأخر عن الموعد</li>
+            <li><i class="fas fa-circle"></i> غياب غير مبرر</li>
+            <li><i class="fas fa-circle"></i> نهاية الشيفت</li>
+          </ul>
+        </div>
+        
+        <div class="alert-type-card fade-in delay-5">
+          <div class="alert-type-icon-large info">
+            <i class="fas fa-cog"></i>
+          </div>
+          <h3>تنبيهات النظام</h3>
+          <p>إشعارات عن التحديثات والتغييرات في النظام</p>
+          <ul class="alert-examples">
+            <li><i class="fas fa-circle"></i> تحديثات جديدة</li>
+            <li><i class="fas fa-circle"></i> مزايا إضافية</li>
+            <li><i class="fas fa-circle"></i> صيانة مجدولة</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Analytics Section -->
+  <section class="analytics-section" style="padding: 100px 0; background: white;">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>تحليلات التنبيهات المتقدمة</h2>
+        <p>رؤية شاملة لجميع التنبيهات والأنماط والاتجاهات</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; margin-top: 50px;">
+        <!-- Left: Charts and Timeline -->
+        <div style="display: flex; flex-direction: column; gap: 32px;">
+          <!-- Alert Distribution Chart -->
+          <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); border-radius: 24px; padding: 40px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -50%; right: -30%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(239, 68, 68, 0.15), transparent); border-radius: 50%;"></div>
+            <div style="position: relative; z-index: 10;">
+              <h3 style="font-size: 1.4rem; font-weight: 700; color: #1f2937; margin-bottom: 32px;">توزيع أنواع التنبيهات (آخر 30 يوم)</h3>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+                <!-- Donut Chart -->
+                <div style="position: relative; width: 220px; height: 220px; margin: 0 auto;">
+                  <svg width="220" height="220" viewBox="0 0 220 220" style="transform: rotate(-90deg);">
+                    <!-- Background circle -->
+                    <circle cx="110" cy="110" r="90" fill="none" stroke="#e5e7eb" stroke-width="40"></circle>
+                    <!-- Critical (35%) - Red -->
+                    <circle cx="110" cy="110" r="90" fill="none" stroke="#ef4444" stroke-width="40" 
+                            stroke-dasharray="197.92 565.48" stroke-dashoffset="0" stroke-linecap="round"></circle>
+                    <!-- Warning (28%) - Orange -->
+                    <circle cx="110" cy="110" r="90" fill="none" stroke="#f59e0b" stroke-width="40" 
+                            stroke-dasharray="158.34 565.48" stroke-dashoffset="-197.92" stroke-linecap="round"></circle>
+                    <!-- Info (22%) - Blue -->
+                    <circle cx="110" cy="110" r="90" fill="none" stroke="#3b82f6" stroke-width="40" 
+                            stroke-dasharray="124.41 565.48" stroke-dashoffset="-356.26" stroke-linecap="round"></circle>
+                    <!-- Success (15%) - Green -->
+                    <circle cx="110" cy="110" r="90" fill="none" stroke="#10b981" stroke-width="40" 
+                            stroke-dasharray="84.82 565.48" stroke-dashoffset="-480.67" stroke-linecap="round"></circle>
+                  </svg>
+                  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: 800; color: #1f2937;">2,847</div>
+                    <div style="color: #6b7280; font-size: 0.9rem; margin-top: 4px;">إجمالي التنبيهات</div>
+                  </div>
+                </div>
+                
+                <!-- Legend -->
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 16px; height: 16px; background: #ef4444; border-radius: 4px;"></div>
+                    <div style="flex: 1;">
+                      <div style="font-weight: 600; color: #1f2937;">حرجة</div>
+                      <div style="color: #6b7280; font-size: 0.85rem;">997 تنبيه (35%)</div>
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 16px; height: 16px; background: #f59e0b; border-radius: 4px;"></div>
+                    <div style="flex: 1;">
+                      <div style="font-weight: 600; color: #1f2937;">تحذيرية</div>
+                      <div style="color: #6b7280; font-size: 0.85rem;">797 تنبيه (28%)</div>
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 16px; height: 16px; background: #3b82f6; border-radius: 4px;"></div>
+                    <div style="flex: 1;">
+                      <div style="font-weight: 600; color: #1f2937;">معلوماتية</div>
+                      <div style="color: #6b7280; font-size: 0.85rem;">626 تنبيه (22%)</div>
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 16px; height: 16px; background: #10b981; border-radius: 4px;"></div>
+                    <div style="flex: 1;">
+                      <div style="font-weight: 600; color: #1f2937;">نجاح</div>
+                      <div style="color: #6b7280; font-size: 0.85rem;">427 تنبيه (15%)</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Alerts Timeline -->
+          <div style="background: white; border: 2px solid #e5e7eb; border-radius: 24px; padding: 32px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px;">
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: #1f2937;">النشاط الأخير</h3>
+              <span style="padding: 6px 14px; background: #fef3c7; color: #d97706; border-radius: 100px; font-size: 0.85rem; font-weight: 600;">آخر 24 ساعة</span>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <!-- Timeline Item 1 -->
+              <div style="display: flex; gap: 16px; padding: 16px; background: #fef2f2; border-right: 4px solid #ef4444; border-radius: 12px;">
+                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #ef4444, #dc2626); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; flex-shrink: 0;">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div style="flex: 1;">
+                  <div style="font-weight: 600; color: #1f2937; margin-bottom: 4px;">تجاوز حد الكاش اليومي</div>
+                  <div style="color: #6b7280; font-size: 0.9rem; margin-bottom: 8px;">المنديب أحمد محمد - 6,200 ر.س</div>
+                  <div style="color: #9ca3af; font-size: 0.8rem;">منذ 5 دقائق</div>
+                </div>
+                <div style="padding: 6px 12px; background: white; border-radius: 8px; color: #ef4444; font-size: 0.85rem; font-weight: 600; height: fit-content;">حرج</div>
+              </div>
+              
+              <!-- Timeline Item 2 -->
+              <div style="display: flex; gap: 16px; padding: 16px; background: #fef9e7; border-right: 4px solid #f59e0b; border-radius: 12px;">
+                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #f59e0b, #d97706); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; flex-shrink: 0;">
+                  <i class="fas fa-wrench"></i>
+                </div>
+                <div style="flex: 1;">
+                  <div style="font-weight: 600; color: #1f2937; margin-bottom: 4px;">موعد صيانة قريب</div>
+                  <div style="color: #6b7280; font-size: 0.9rem; margin-bottom: 8px;">مركبة ABC-1234 - خلال 3 أيام</div>
+                  <div style="color: #9ca3af; font-size: 0.8rem;">منذ 18 دقيقة</div>
+                </div>
+                <div style="padding: 6px 12px; background: white; border-radius: 8px; color: #f59e0b; font-size: 0.85rem; font-weight: 600; height: fit-content;">تحذير</div>
+              </div>
+              
+              <!-- Timeline Item 3 -->
+              <div style="display: flex; gap: 16px; padding: 16px; background: #eff6ff; border-right: 4px solid #3b82f6; border-radius: 12px;">
+                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; flex-shrink: 0;">
+                  <i class="fas fa-info-circle"></i>
+                </div>
+                <div style="flex: 1;">
+                  <div style="font-weight: 600; color: #1f2937; margin-bottom: 4px;">تحديث نظام التسويات</div>
+                  <div style="color: #6b7280; font-size: 0.9rem; margin-bottom: 8px;">تم إضافة مزايا جديدة</div>
+                  <div style="color: #9ca3af; font-size: 0.8rem;">منذ ساعة</div>
+                </div>
+                <div style="padding: 6px 12px; background: white; border-radius: 8px; color: #3b82f6; font-size: 0.85rem; font-weight: 600; height: fit-content;">معلومة</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right: Statistics -->
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <!-- Response Time -->
+          <div style="background: white; border: 2px solid #e5e7eb; border-radius: 20px; padding: 28px; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#ef4444'; this.style.boxShadow='0 12px 32px rgba(239,68,68,0.15)'" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none'">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div style="color: #6b7280; font-size: 0.95rem;">وقت الاستجابة</div>
+              <div style="width: 48px; height: 48px; background: rgba(239, 68, 68, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ef4444; font-size: 1.2rem;">
+                <i class="fas fa-stopwatch"></i>
+              </div>
+            </div>
+            <div style="font-size: 2.5rem; font-weight: 800; color: #1f2937; margin-bottom: 12px;">< 1s</div>
+            <div style="display: flex; align-items: center; gap: 8px; color: #10b981; font-size: 0.9rem;">
+              <i class="fas fa-arrow-down"></i>
+              <span>تحسن بنسبة 42% عن الشهر الماضي</span>
+            </div>
+          </div>
+          
+          <!-- Resolution Rate -->
+          <div style="background: white; border: 2px solid #e5e7eb; border-radius: 20px; padding: 28px; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.boxShadow='0 12px 32px rgba(16,185,129,0.15)'" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none'">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div style="color: #6b7280; font-size: 0.95rem;">معدل المعالجة</div>
+              <div style="width: 48px; height: 48px; background: rgba(16, 185, 129, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #10b981; font-size: 1.2rem;">
+                <i class="fas fa-check-double"></i>
+              </div>
+            </div>
+            <div style="font-size: 2.5rem; font-weight: 800; color: #1f2937; margin-bottom: 12px;">94.8%</div>
+            <div style="display: flex; align-items: center; gap: 8px; color: #10b981; font-size: 0.9rem;">
+              <i class="fas fa-arrow-up"></i>
+              <span>+5.2% زيادة في الكفاءة</span>
+            </div>
+          </div>
+          
+          <!-- Active Alerts -->
+          <div style="background: white; border: 2px solid #e5e7eb; border-radius: 20px; padding: 28px; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#f59e0b'; this.style.boxShadow='0 12px 32px rgba(245,158,11,0.15)'" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none'">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div style="color: #6b7280; font-size: 0.95rem;">التنبيهات النشطة</div>
+              <div style="width: 48px; height: 48px; background: rgba(245, 158, 11, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #f59e0b; font-size: 1.2rem;">
+                <i class="fas fa-bell"></i>
+              </div>
+            </div>
+            <div style="font-size: 2.5rem; font-weight: 800; color: #1f2937; margin-bottom: 12px;">127</div>
+            <div style="display: flex; align-items: center; gap: 8px; color: #6b7280; font-size: 0.9rem;">
+              <i class="fas fa-circle" style="font-size: 0.5rem; color: #f59e0b;"></i>
+              <span>23 تحتاج اهتمام فوري</span>
+        </div>
+          </div>
+          
+          <!-- Trend Analysis -->
+          <div style="background: linear-gradient(135deg, #1f2937, #111827); border-radius: 20px; padding: 28px; color: white;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+              <div style="width: 40px; height: 40px; background: rgba(239, 68, 68, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-chart-line" style="color: #ef4444;"></i>
+              </div>
+              <h4 style="font-size: 1.1rem; font-weight: 600; margin: 0;">تحليل الاتجاه</h4>
+            </div>
+            <div style="margin-bottom: 16px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="font-size: 0.85rem; opacity: 0.8;">اتجاه التنبيهات</span>
+                <span style="font-size: 0.85rem; font-weight: 600;">↓ -18%</span>
+              </div>
+              <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 100px; overflow: hidden;">
+                <div style="width: 82%; height: 100%; background: linear-gradient(90deg, #10b981, #059669); border-radius: 100px;"></div>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; opacity: 0.7; margin: 0; line-height: 1.6;">انخفاض ملحوظ في عدد التنبيهات الحرجة مقارنة بالشهر الماضي</p>
+          </div>
+        </div>
+        </div>
+        
+      <!-- Weekly Trends Chart -->
+      <div style="background: white; border: 2px solid #e5e7eb; border-radius: 24px; padding: 40px; margin-top: 40px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
+          <h3 style="font-size: 1.4rem; font-weight: 700; color: #1f2937;">اتجاهات التنبيهات الأسبوعية</h3>
+          <div style="display: flex; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="width: 12px; height: 12px; background: #ef4444; border-radius: 3px;"></div>
+              <span style="color: #6b7280; font-size: 0.9rem;">حرجة</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="width: 12px; height: 12px; background: #f59e0b; border-radius: 3px;"></div>
+              <span style="color: #6b7280; font-size: 0.9rem;">تحذيرية</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="width: 12px; height: 12px; background: #3b82f6; border-radius: 3px;"></div>
+              <span style="color: #6b7280; font-size: 0.9rem;">معلوماتية</span>
+          </div>
+          </div>
+        </div>
+        
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; height: 280px; gap: 24px;">
+          <!-- Day 1 -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 12px; height: 100%;">
+            <div style="width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;">
+              <div style="width: 100%; height: 35%; background: linear-gradient(180deg, #ef4444, #dc2626); border-radius: 8px 8px 0 0; animation: growBar 1s ease-out;"></div>
+              <div style="width: 100%; height: 28%; background: linear-gradient(180deg, #f59e0b, #d97706); border-radius: 8px 8px 0 0; animation: growBar 1.2s ease-out;"></div>
+              <div style="width: 100%; height: 25%; background: linear-gradient(180deg, #3b82f6, #2563eb); border-radius: 8px 8px 0 0; animation: growBar 1.4s ease-out;"></div>
+            </div>
+            <span style="color: #6b7280; font-size: 0.85rem; font-weight: 500;">الأحد</span>
+          </div>
+          
+          <!-- Day 2 -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 12px; height: 100%;">
+            <div style="width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;">
+              <div style="width: 100%; height: 42%; background: linear-gradient(180deg, #ef4444, #dc2626); border-radius: 8px 8px 0 0; animation: growBar 1s ease-out;"></div>
+              <div style="width: 100%; height: 32%; background: linear-gradient(180deg, #f59e0b, #d97706); border-radius: 8px 8px 0 0; animation: growBar 1.2s ease-out;"></div>
+              <div style="width: 100%; height: 22%; background: linear-gradient(180deg, #3b82f6, #2563eb); border-radius: 8px 8px 0 0; animation: growBar 1.4s ease-out;"></div>
+            </div>
+            <span style="color: #6b7280; font-size: 0.85rem; font-weight: 500;">الإثنين</span>
+          </div>
+          
+          <!-- Day 3 -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 12px; height: 100%;">
+            <div style="width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;">
+              <div style="width: 100%; height: 38%; background: linear-gradient(180deg, #ef4444, #dc2626); border-radius: 8px 8px 0 0; animation: growBar 1s ease-out;"></div>
+              <div style="width: 100%; height: 25%; background: linear-gradient(180deg, #f59e0b, #d97706); border-radius: 8px 8px 0 0; animation: growBar 1.2s ease-out;"></div>
+              <div style="width: 100%; height: 30%; background: linear-gradient(180deg, #3b82f6, #2563eb); border-radius: 8px 8px 0 0; animation: growBar 1.4s ease-out;"></div>
+            </div>
+            <span style="color: #6b7280; font-size: 0.85rem; font-weight: 500;">الثلاثاء</span>
+        </div>
+        
+          <!-- Day 4 -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 12px; height: 100%;">
+            <div style="width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;">
+              <div style="width: 100%; height: 30%; background: linear-gradient(180deg, #ef4444, #dc2626); border-radius: 8px 8px 0 0; animation: growBar 1s ease-out;"></div>
+              <div style="width: 100%; height: 28%; background: linear-gradient(180deg, #f59e0b, #d97706); border-radius: 8px 8px 0 0; animation: growBar 1.2s ease-out;"></div>
+              <div style="width: 100%; height: 35%; background: linear-gradient(180deg, #3b82f6, #2563eb); border-radius: 8px 8px 0 0; animation: growBar 1.4s ease-out;"></div>
+            </div>
+            <span style="color: #6b7280; font-size: 0.85rem; font-weight: 500;">الأربعاء</span>
+          </div>
+          
+          <!-- Day 5 -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 12px; height: 100%;">
+            <div style="width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;">
+              <div style="width: 100%; height: 25%; background: linear-gradient(180deg, #ef4444, #dc2626); border-radius: 8px 8px 0 0; animation: growBar 1s ease-out;"></div>
+              <div style="width: 100%; height: 32%; background: linear-gradient(180deg, #f59e0b, #d97706); border-radius: 8px 8px 0 0; animation: growBar 1.2s ease-out;"></div>
+              <div style="width: 100%; height: 28%; background: linear-gradient(180deg, #3b82f6, #2563eb); border-radius: 8px 8px 0 0; animation: growBar 1.4s ease-out;"></div>
+            </div>
+            <span style="color: #6b7280; font-size: 0.85rem; font-weight: 500;">الخميس</span>
+          </div>
+          
+          <!-- Day 6 -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 12px; height: 100%;">
+            <div style="width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;">
+              <div style="width: 100%; height: 20%; background: linear-gradient(180deg, #ef4444, #dc2626); border-radius: 8px 8px 0 0; animation: growBar 1s ease-out;"></div>
+              <div style="width: 100%; height: 22%; background: linear-gradient(180deg, #f59e0b, #d97706); border-radius: 8px 8px 0 0; animation: growBar 1.2s ease-out;"></div>
+              <div style="width: 100%; height: 25%; background: linear-gradient(180deg, #3b82f6, #2563eb); border-radius: 8px 8px 0 0; animation: growBar 1.4s ease-out;"></div>
+        </div>
+            <span style="color: #6b7280; font-size: 0.85rem; font-weight: 500;">الجمعة</span>
+          </div>
+          
+          <!-- Day 7 -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 12px; height: 100%;">
+            <div style="width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;">
+              <div style="width: 100%; height: 18%; background: linear-gradient(180deg, #ef4444, #dc2626); border-radius: 8px 8px 0 0; animation: growBar 1s ease-out;"></div>
+              <div style="width: 100%; height: 20%; background: linear-gradient(180deg, #f59e0b, #d97706); border-radius: 8px 8px 0 0; animation: growBar 1.2s ease-out;"></div>
+              <div style="width: 100%; height: 22%; background: linear-gradient(180deg, #3b82f6, #2563eb); border-radius: 8px 8px 0 0; animation: growBar 1.4s ease-out;"></div>
+            </div>
+            <span style="color: #6b7280; font-size: 0.85rem; font-weight: 500;">السبت</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>مميزات نظام التنبيهات</h2>
+        <p>أدوات متقدمة لضمان عدم تفويت أي حدث مهم</p>
+      </div>
+      
+      <div class="features-showcase">
+        <div class="features-visual">
+          <div class="notification-demo">
+            <div class="notification-demo-header">
+              <div class="notification-demo-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div>
+                <div class="notification-demo-title">تنبيه هام!</div>
+              </div>
+            </div>
+            <div class="notification-demo-body">
+              تجاوز المنديب أحمد محمد حد الكاش اليومي المسموح (5,000 ر.س). الرصيد الحالي: 6,200 ر.س
+            </div>
+            <div class="notification-demo-actions">
+              <button class="notification-demo-btn primary">عرض التفاصيل</button>
+              <button class="notification-demo-btn secondary">تجاهل</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="features-list">
+          <div class="feature-item-large">
+            <div class="feature-item-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <div class="feature-item-content">
+              <h3>تنبيهات فورية</h3>
+              <p>استلام الإشعارات في نفس اللحظة التي يحدث فيها الحدث مع ضمان عدم التأخير</p>
+            </div>
+          </div>
+          
+          <div class="feature-item-large">
+            <div class="feature-item-icon">
+              <i class="fas fa-sliders-h"></i>
+              </div>
+            <div class="feature-item-content">
+              <h3>إعدادات قابلة للتخصيص</h3>
+              <p>تحكم كامل في أنواع التنبيهات وأولوياتها وطرق استلامها</p>
+            </div>
+          </div>
+          
+          <div class="feature-item-large">
+            <div class="feature-item-icon">
+              <i class="fas fa-mobile-alt"></i>
+              </div>
+            <div class="feature-item-content">
+              <h3>إشعارات متعددة القنوات</h3>
+              <p>استلام التنبيهات عبر التطبيق، البريد الإلكتروني، الرسائل النصية، وWhatsApp</p>
+            </div>
+              </div>
+          
+          <div class="feature-item-large">
+            <div class="feature-item-icon">
+              <i class="fas fa-filter"></i>
+            </div>
+            <div class="feature-item-content">
+              <h3>فلترة ذكية</h3>
+              <p>تصنيف تلقائي للتنبيهات حسب الأهمية والنوع مع إمكانية البحث والفلترة</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section" style="background: linear-gradient(165deg, #0f172a 0%, #1e293b 40%, #334155 100%); position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 40%), radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 40%); pointer-events: none;"></div>
+    <div class="container" style="position: relative; z-index: 10;">
+      <div class="text-center">
+        <h2 style="color: white; margin-bottom: 20px;">جاهز للبقاء على اطلاع دائم؟</h2>
+        <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; max-width: 600px; margin: 0 auto 40px;">
+          ابدأ الآن واستفد من نظام تنبيهات ذكي يبقيك على اطلاع بكل ما يحدث
+        </p>
+        <div class="d-flex gap-3 justify-center flex-wrap">
+          <a href="support.html#contact" class="btn btn-secondary btn-lg">
+            <i class="fas fa-rocket"></i>
+            <span>ابدأ مجاناً</span>
+          </a>
+          <a href="support.html" class="btn btn-outline btn-lg" style="color: white; border-color: white;">
+            <i class="fas fa-phone"></i>
+            <span>تحدث معنا</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="logo.png" alt="DASHCORD" class="dashcord-logo-img">
+          </div>
+          <p>منصة متكاملة لإدارة أساطيل التوصيل والمناديب باحترافية عالية، نساعدك على تحقيق أقصى كفاءة في عملياتك اللوجستية.</p>
+        </div>
+        
+        <div class="footer-column">
+          <h5>روابط سريعة</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="vehicles.html">إدارة المركبات</a></li>
+            <li><a href="riders.html">إدارة المناديب</a></li>
+            <li><a href="settlements.html">التسويات المالية</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h5>المزيد</h5>
+          <ul class="footer-links">
+            <li><a href="reports.html">التقارير</a></li>
+            <li><a href="alerts.html">التنبيهات</a></li>
+            <li><a href="support.html">الدعم الفني</a></li>
+            <li><a href="support.html#faq">الأسئلة الشائعة</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h5>قانوني</h5>
+          <ul class="footer-links">
+            <li><a href="#">سياسة الخصوصية</a></li>
+            <li><a href="#">الشروط والأحكام</a></li>
+            <li><a href="#">سياسة الاستخدام</a></li>
+            <li><a href="support.html#contact">تواصل معنا</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 داش كورد. جميع الحقوق محفوظة.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" aria-label="العودة للأعلى">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
