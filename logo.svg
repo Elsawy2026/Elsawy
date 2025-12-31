@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Water Drop Shape -->
+  <defs>
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="lightGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main Water Drop -->
+  <path d="M 100 30 Q 130 50 140 80 Q 150 110 130 140 Q 110 170 100 170 Q 90 170 70 140 Q 50 110 60 80 Q 70 50 100 30 Z" 
+        fill="url(#waterGradient)" 
+        stroke="#0891b2" 
+        stroke-width="2"/>
+  
+  <!-- Highlight -->
+  <ellipse cx="115" cy="70" rx="15" ry="25" fill="url(#lightGradient)"/>
+  
+  <!-- Small Drops -->
+  <circle cx="140" cy="50" r="8" fill="#06b6d4" opacity="0.6"/>
+  <circle cx="155" cy="65" r="6" fill="#0ea5e9" opacity="0.5"/>
+  <circle cx="60" cy="55" r="7" fill="#06b6d4" opacity="0.6"/>
+  
+  <!-- Ripple Effect -->
+  <circle cx="100" cy="160" r="20" fill="none" stroke="#06b6d4" stroke-width="2" opacity="0.3"/>
+  <circle cx="100" cy="160" r="30" fill="none" stroke="#0ea5e9" stroke-width="1.5" opacity="0.2"/>
+</svg>
+
