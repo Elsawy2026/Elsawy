@@ -12,14 +12,22 @@
         <nav class="nav">
             <div class="container">
                 <div class="nav-brand">
-                    <div class="logo">💧</div>
+                    <img src="logo.png" alt="اللحيدان لتوريد المياه" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="logo" style="display:none;">💧</div>
                     <h2>اللحيدان لتوريد المياه</h2>
                 </div>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <ul class="nav-menu">
                     <li><a href="#home">الرئيسية</a></li>
                     <li><a href="#about">من نحن</a></li>
                     <li><a href="#services">الخدمات</a></li>
+                    <li><a href="#stats">الإحصائيات</a></li>
                     <li><a href="#work-method">أسلوب العمل</a></li>
+                    <li><a href="#testimonials">الشهادات</a></li>
                     <li><a href="#contact">اتصل بنا</a></li>
                 </ul>
             </div>
@@ -30,7 +38,8 @@
         <section id="home" class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <div class="hero-logo">💧</div>
+                    <img src="logo.png" alt="اللحيدان لتوريد المياه" class="hero-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="hero-logo" style="display:none;">💧</div>
                     <h1 class="hero-title">اللحيدان لتوريد المياه</h1>
                     <p class="hero-subtitle">ALLHIDAN FOR WATER SUPPLY</p>
                     <p class="hero-description">خدمات معالجة المياه ونقلها وتوزيعها بكفاءة كبيرة وجودة عالية</p>
@@ -51,6 +60,22 @@
                         <p>وفي عام 2019، توسعت المؤسسة بافتتاح فرع آخر في شمال الرياض، مما ساهم في إكمال نطاق خدماتها وتوسيع تغطيتها.</p>
                         <p>تتميز المؤسسة بامتلاكها منشآت حديثة ومبتكرة لمعالجة المياه باستخدام تقنية التناضح العكسي (Reverse Osmosis)، مع إجراء فحوصات وتحاليل جودة المياه لضمان أعلى المعايير.</p>
                         <p>كما تمتلك المؤسسة أسطولاً جاهزاً ومناسباً للعمل بكفاءة عالية.</p>
+                    </div>
+                    <div class="about-images">
+                        <div class="about-image-card">
+                            <img src="water-treatment-facility.jpg" alt="محطة معالجة المياه" class="about-img" onerror="this.style.display='none';">
+                            <div class="image-overlay">
+                                <h3>محطة معالجة المياه المتقدمة</h3>
+                                <p>تقنية التناضح العكسي (RO)</p>
+                            </div>
+                        </div>
+                        <div class="about-image-card">
+                            <img src="water-splash.jpg" alt="جودة المياه" class="about-img" onerror="this.style.display='none';">
+                            <div class="image-overlay">
+                                <h3>مياه نقية وعذبة</h3>
+                                <p>أعلى معايير الجودة</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -73,22 +98,54 @@
             </div>
         </section>
 
+        <!-- Statistics Section -->
+        <section id="stats" class="stats">
+            <div class="container">
+                <h2 class="section-title">إحصائياتنا</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🚚</div>
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">شاحنة</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-number" data-target="15">0</div>
+                        <div class="stat-label">عام من الخبرة</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💧</div>
+                        <div class="stat-number" data-target="1000">0</div>
+                        <div class="stat-label">عميل راضٍ</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📍</div>
+                        <div class="stat-number" data-target="2">0</div>
+                        <div class="stat-label">محطة معالجة</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="services" class="services">
             <div class="container">
                 <h2 class="section-title">خدماتنا</h2>
                 <div class="services-grid">
                     <div class="service-card">
-                        <div class="service-icon">🚰</div>
+                        <img src="water-extraction.jpg" alt="استخراج المياه" class="service-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="service-icon" style="display:none;">🚰</div>
                         <h3>استخراج المياه</h3>
                         <p>استخراج المياه من المصادر الطبيعية بكفاءة عالية</p>
                     </div>
                     <div class="service-card">
-                        <div class="service-icon">🔬</div>
+                        <img src="water-treatment-equipment.jpg" alt="معالجة المياه" class="service-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="service-icon" style="display:none;">🔬</div>
                         <h3>معالجة المياه</h3>
                         <p>معالجة المياه باستخدام تقنية التناضح العكسي (RO) بأحدث التقنيات</p>
                     </div>
                     <div class="service-card">
-                        <div class="service-icon">🚚</div>
+                        <img src="water-trucks.jpg" alt="نقل وتوزيع المياه" class="service-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="service-icon" style="display:none;">🚚</div>
                         <h3>نقل وتوزيع المياه</h3>
                         <p>نقل وتوزيع وتوريد المياه بأسطولنا الحديث المتنوع</p>
                     </div>
@@ -106,8 +163,44 @@
                 </div>
 
                 <div class="team-section">
-                    <h3 class="team-title">فريق العمل</h3>
-                    <p class="team-description">فريق عمل قام على إنجاز المهام في أسرع وقت وبأعلى جودة</p>
+                    <div class="team-content">
+                        <h3 class="team-title">فريق العمل</h3>
+                        <p class="team-description">فريق عمل قام على إنجاز المهام في أسرع وقت وبأعلى جودة</p>
+                        <img src="water-trucks.jpg" alt="فريق العمل والعمليات" class="team-image" onerror="this.style.display='none';">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2 class="section-title">ماذا يقول عملاؤنا</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"خدمة ممتازة وجودة عالية في توريد المياه. فريق محترف ومتجاوب مع جميع الطلبات."</p>
+                        <div class="testimonial-author">
+                            <strong>أحمد محمد</strong>
+                            <span>عميل</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"نوفر المياه لدينا بانتظام وجودة ممتازة. أسطول الشاحنات متنوع ويغطي جميع احتياجاتنا."</p>
+                        <div class="testimonial-author">
+                            <strong>سارة أحمد</strong>
+                            <span>عميلة</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"خدمة احترافية منذ عام 2010. نثق في جودة المياه وسرعة التوصيل."</p>
+                        <div class="testimonial-author">
+                            <strong>خالد العلي</strong>
+                            <span>عميل</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -118,21 +211,24 @@
                 <div class="work-steps">
                     <div class="work-step">
                         <div class="step-number">1</div>
-                        <div class="step-icon">🚚</div>
+                        <img src="truck-filling.jpg" alt="تعبئة الشاحنة" class="step-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="step-icon" style="display:none;">🚚</div>
                         <h3>تعبئة الشاحنة</h3>
                         <p>تعبئة الشاحنات من محطاتنا المعتمدة بجودة عالية</p>
                     </div>
                     <div class="work-step">
                         <div class="step-number">2</div>
-                        <div class="step-icon">🔍</div>
+                        <img src="water-quality-test.jpg" alt="فحص جودة المياه" class="step-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="step-icon" style="display:none;">🔍</div>
                         <h3>فحص الشاحنة قبل المغادرة</h3>
-                        <p>فحص دقيق لكل شاحنة قبل المغادرة لضمان الجودة والأمان</p>
+                        <p>فحص دقيق لكل شاحنة قبل المغادرة لضمان الجودة والأمان باستخدام أجهزة اختبار حديثة</p>
                     </div>
                     <div class="work-step">
                         <div class="step-number">3</div>
-                        <div class="step-icon">⚙️</div>
+                        <img src="water-treatment-process.jpg" alt="معالجة المياه" class="step-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="step-icon" style="display:none;">⚙️</div>
                         <h3>معالجة المياه</h3>
-                        <p>معالجة شاملة للمياه باستخدام أحدث التقنيات</p>
+                        <p>معالجة شاملة للمياه باستخدام أحدث التقنيات في محطاتنا المتقدمة</p>
                     </div>
                 </div>
             </div>

@@ -93,7 +93,7 @@ const observer = new IntersectionObserver(function(entries) {
 }, observerOptions);
 
 // Observe all animated elements
-const animatedElements = document.querySelectorAll('.service-card, .work-step, .vision-card, .objectives-card, .truck-card, .contact-item');
+const animatedElements = document.querySelectorAll('.service-card, .work-step, .vision-card, .objectives-card, .truck-card, .contact-item, .testimonial-card');
 animatedElements.forEach((el, index) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(40px)';
@@ -101,13 +101,21 @@ animatedElements.forEach((el, index) => {
     observer.observe(el);
 });
 
-// Parallax effect for hero section
+// Improved parallax effect for hero section
+let ticking = false;
 window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        hero.style.opacity = 1 - scrolled / 500;
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < hero.offsetHeight) {
+                const parallax = scrolled * 0.5;
+                hero.style.transform = `translateY(${parallax}px)`;
+                hero.style.opacity = Math.max(0, 1 - scrolled / 600);
+            }
+            ticking = false;
+        });
+        ticking = true;
     }
 });
 
@@ -161,7 +169,7 @@ document.querySelectorAll('.service-card').forEach(card => {
     });
 });
 
-// Counter animation for numbers (if you add stats later)
+// Counter animation for statistics
 function animateCounter(element, target, duration = 2000) {
     let start = 0;
     const increment = target / (duration / 16);
@@ -177,6 +185,27 @@ function animateCounter(element, target, duration = 2000) {
     }, 16);
 }
 
+// Animate statistics when in view
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const statNumbers = entry.target.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                if (stat.textContent === '0') {
+                    animateCounter(stat, target);
+                }
+            });
+            statsObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+const statsSection = document.querySelector('.stats');
+if (statsSection) {
+    statsObserver.observe(statsSection);
+}
+
 // Add loading animation
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
@@ -187,36 +216,35 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
-// Mobile menu toggle (if needed)
-const createMobileMenu = () => {
-    if (window.innerWidth <= 768) {
-        const nav = document.querySelector('.nav-menu');
-        if (nav && !document.querySelector('.menu-toggle')) {
-            const toggle = document.createElement('button');
-            toggle.className = 'menu-toggle';
-            toggle.innerHTML = '☰';
-            toggle.style.cssText = `
-                display: block;
-                background: none;
-                border: none;
-                font-size: 2rem;
-                color: var(--primary-color);
-                cursor: pointer;
-                padding: 0.5rem;
-            `;
-            
-            const navBrand = document.querySelector('.nav-brand');
-            navBrand.parentNode.insertBefore(toggle, navBrand.nextSibling);
-            
-            toggle.addEventListener('click', () => {
-                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-            });
-        }
-    }
-};
+// Mobile menu toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
 
-createMobileMenu();
-window.addEventListener('resize', createMobileMenu);
+if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close menu when clicking on a link
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
 
 console.log('✨ موقع اللحيدان لتوريد المياه جاهز!');
 
